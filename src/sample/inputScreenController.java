@@ -13,48 +13,30 @@ import java.util.Map;
 public class inputScreenController {
 
     @FXML
-    private TextField team1;
-    @FXML
-    private TextField team2;
-    @FXML
-    private TextField team3;
-    @FXML
-    private TextField team4;
-    @FXML
-    private TextField team5;
-    @FXML
-    private TextField team6;
-    @FXML
-    private TextField team7;
-    @FXML
-    private TextField team8;
-    @FXML
-    private TextField team9;
-    @FXML
-    private TextField team10;
-    @FXML
-    private TextField team11;
-    @FXML
-    private TextField team12;
-
+    private TextField team1,team2,team3,team4,team5,team6,team7,team8,team9,team10,team11,team12;
     private static Map<Integer, String> teamsInLeague = new HashMap<>();
+    private Scene scene;
+    private FXMLLoader fxmlLoader;
+    private Stage stage;
+
+    public void initialize() {
+        fillMapWithTeams();
+        stage = new Stage();
+        stage.setTitle("Randomised Draftorder");
+    }
 
     @FXML
     public void onButtonClicked() {
-
-        fillMapWithTeams();
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("resultScreen.fxml"));
         try {
-            Scene scene = new Scene(fxmlLoader.load(), 300,400);
-            Stage stage = new Stage();
-            stage.setTitle("Randomised Draftorder");
+            fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("resultScreen.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 300, 400);
             stage.setScene(scene);
             stage.show();
-
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println(ex);
         }
+
     }
 
     private void fillMapWithTeams() {
@@ -72,10 +54,8 @@ public class inputScreenController {
         teamsInLeague.put(12, team12.getText());
     }
 
-
     static public Map<Integer, String> returnTeamsInLeague() {
         return new HashMap<>(teamsInLeague);
-
     }
 
 }

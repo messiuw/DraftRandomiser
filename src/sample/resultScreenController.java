@@ -1,8 +1,10 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,36 +12,13 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class resultScreenController {
     @FXML
-    private Label lb1;
-    @FXML
-    private Label lb2;
-    @FXML
-    private Label lb3;
-    @FXML
-    private Label lb4;
-    @FXML
-    private Label lb5;
-    @FXML
-    private Label lb6;
-    @FXML
-    private Label lb7;
-    @FXML
-    private Label lb8;
-    @FXML
-    private Label lb9;
-    @FXML
-    private Label lb10;
-    @FXML
-    private Label lb11;
-    @FXML
-    private Label lb12;
+    private Label lb1,lb2,lb3,lb4,lb5,lb6,lb7,lb8,lb9,lb10,lb11,lb12;
 
     public void initialize() {
         generateRandomDistribution(inputScreenController.returnTeamsInLeague());
     }
 
     private void generateRandomDistribution(Map<Integer, String> inputMap) {
-
         List<Label> labelList = new ArrayList<>();
         labelList.add(lb1);
         labelList.add(lb2);
@@ -66,5 +45,12 @@ public class resultScreenController {
                 i++;
             }
         }
+    }
+
+    public void saveToFileButton() {
+
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.showOpenDialog(null);
+
     }
 }
