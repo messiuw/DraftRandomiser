@@ -3,6 +3,7 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -15,26 +16,32 @@ public class inputScreenController {
     @FXML
     private TextField team1,team2,team3,team4,team5,team6,team7,team8,team9,team10,team11,team12;
     private static Map<Integer, String> teamsInLeague = new HashMap<>();
-    private Scene scene;
     private FXMLLoader fxmlLoader;
     private Stage stage;
+    @FXML
+    private MenuBar menuBar;
+
+    private static final String OS = System.getProperty("os.name");
 
     public void initialize() {
-        fillMapWithTeams();
         stage = new Stage();
         stage.setTitle("Randomised Draftorder");
+        if (OS.equalsIgnoreCase("Mac OS X")) {
+            menuBar.useSystemMenuBarProperty().set(true);
+        }
     }
 
     @FXML
     public void onButtonClicked() {
         try {
+            fillMapWithTeams();
             fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("resultScreen.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 300, 400);
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            System.out.println(ex);
+            System.out.println(ex.getMessage());
         }
 
     }
@@ -54,7 +61,7 @@ public class inputScreenController {
         teamsInLeague.put(12, team12.getText());
     }
 
-    static public Map<Integer, String> returnTeamsInLeague() {
+    static Map<Integer, String> returnTeamsInLeague() {
         return new HashMap<>(teamsInLeague);
     }
 
