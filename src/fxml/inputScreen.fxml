@@ -11,11 +11,12 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuItem?>
-<BorderPane maxHeight="Infinity" maxWidth="Infinity" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.inputScreenController">
+<BorderPane maxHeight="Infinity" maxWidth="Infinity" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ressources.inputScreenController">
     <padding>
         <Insets bottom="25" />
     </padding>
     <top>
+        <!--
         <MenuBar fx:id="menuBar">
             <menus>
             <Menu text="File">
@@ -28,16 +29,17 @@
             </Menu>
             </menus>
         </MenuBar>
-        <!--
-       <Label alignment="CENTER" contentDisplay="CENTER" text="Draftorder Randomizer" BorderPane.alignment="CENTER">
+        -->
+
+       <Label alignment="CENTER" contentDisplay="CENTER" text="" BorderPane.alignment="CENTER">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
        </Label>
--->
+
    </top>
    <center>
-       <GridPane alignment="CENTER" hgap="5.0" maxHeight="Infinity" maxWidth="Infinity" vgap="5.0">
+       <GridPane alignment="CENTER" hgap="5.0" maxHeight="Infinity" maxWidth="Infinity" vgap="5.0" fx:id="gridPane">
            <TextField fx:id="team1" text="Enter Team 1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
            <TextField fx:id="team2" text="Enter Team 2" GridPane.columnIndex="0" GridPane.rowIndex="1" />
            <TextField fx:id="team3" text="Enter Team 3" GridPane.columnIndex="0" GridPane.rowIndex="2" />
@@ -53,6 +55,6 @@
        </GridPane>
    </center>
    <bottom>
-       <Button onAction="#onButtonClicked" text="Generate Random Distribution" BorderPane.alignment="CENTER" />
+       <Button onAction="#generateRandomDistribution" text="Generate Random Distribution" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>
